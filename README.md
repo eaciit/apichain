@@ -1,5 +1,6 @@
 # apichain
 
 To run 
-1. Configure app.json on config folder
-2. Run "nohup ./apichain" from webapp folder
+1. Restore database from dumps folder
+2. Configure app.json on config folder
+3. Run "nohup ./apichain &" from webapp folder
