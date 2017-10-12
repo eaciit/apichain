@@ -1,0 +1,36 @@
+#%RAML 1.0
+title: "File5ab"
+
+securitySchemes:
+  oauth_2_0:
+    type:
+types:
+  test1: !include schema/test1.json
+  test2: !include schema/test2.json
+
+/File5:
+  description: "File5"
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: 
+      201:
+        body:
+          application/json:
+            schema: 
+      500:
+        body:
+          application/json:
+            schema: 
+  post:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: 
+      500:
+        body:
+          application/json:
+            schema: 

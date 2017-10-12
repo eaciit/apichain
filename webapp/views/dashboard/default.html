@@ -1,0 +1,212 @@
+<div class="row bg-title">
+  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <h4 class="page-title">Dashboard </h4>
+  </div>
+  <!-- /.col-lg-3 -->
+</div>
+
+<div class="row" data-bind="with: dashboard">
+  <div class="col-md-8">
+    <div class="white-box" id="filter-graph">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="dropdown col-md-6">
+              View type
+
+              <input id="dd-viewType" data-bind="kendoDropDownList: { data: viewTypeChoices, value: viewTypeVal, change: viewTypeChange }" />
+            </div>
+
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="checkbox">
+                    <span class="icons">
+                      <span class="first-icon fa fa-square-o"></span>
+                      <span class="second-icon fa fa-check-square-o"></span>
+                    </span>
+                    <input type="checkbox" value="Business View" data-bind="checked: cb" />
+                    Business View
+                  </label>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="checkbox">
+                    <span class="icons">
+                      <span class="first-icon fa fa-square-o"></span>
+                      <span class="second-icon fa fa-check-square-o"></span>
+                    </span>
+                    <input type="checkbox" value="User Journey" data-bind="checked: dashboard.cb">
+                    User Journey
+                  </label>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="checkbox">
+                    <span class="icons">
+                      <span class="first-icon fa fa-square-o"></span>
+                      <span class="second-icon fa fa-check-square-o"></span>
+                    </span>
+                    <input type="checkbox" value="Resource" data-bind="checked: dashboard.cb">
+                    Resource
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="padding-bottom: 50px;">
+        <div class="col-md-12" style="height: 610px;">
+          <div data-bind="visible: busGraphVis" style="height: 100%;">
+            <style>
+              .node .node-name{
+                /*margin: 5px 6px 5px;*/
+                margin-top: -11px;
+              }
+              .node.kotak {
+                border: 2px solid #A06C31;
+                border-radius: 3px;
+              }
+              .node.kotakbgblue {
+                border: 2px solid #00587f;
+                border-radius: 3px;
+                background-color: #00587f;
+                color: #ffffff;
+              }
+              .node.kotakbgwhite {
+                border: 2px solid #00587f;
+                border-radius: 3px;
+                color: #00587f;
+              }
+              .node.bunder {
+                border: 2px solid #A06C31;
+                border-radius: 50px;
+                background-color: #FBCF05;
+              }
+              .node.bunder .node-name, .node.kotak .node-name{
+                margin-top: -0px;
+              }
+              .node.bunder .node-name, .node.kotakbgwhite .node-name{
+                margin-top: -0px;
+                margin-left: 6px;
+                margin-right: 6px;
+              }
+              .node.bunder .node-name, .node.kotakbgblue .node-name{
+                margin-top: -0px;
+                margin-left: 6px;
+                margin-right: 6px;
+              }
+              .Treant .collapse-switch {
+                width: 15px;
+                height: 15px;
+                margin: 5px -18px 0px 0px;
+                border: none;
+                background: url({{BaseUrl}}images/plus_add_minus.png) no-repeat;
+                background-size: 13px 13px;
+              }
+              .Treant .collapsed .collapse-switch {
+                background-color: transparent;
+                background: url({{BaseUrl}}images/plus_add_blue.png) no-repeat;
+                background-size: 13px 13px;
+              }
+            </style>
+            <div id="graph-business" style="height: 100%;"></div>
+          </div>
+
+          <div id="graph-developer" data-bind="visible: devGraphVis" style="height: 100%;"></div>
+
+          <div id="graph-journey" data-bind="visible: journeyGraphVis" style="height: 100%;">jour</div>
+        </div>
+      </div>
+
+      <!-- <div class="footer" style="height: 50px; background-color: #253a46;"></div> -->
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="row">
+      <!--col -->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+          <div class="col-in row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <h3 class="counter text-center text-danger">14</h3>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <i data-icon="E" class="linea-icon linea-basic"></i>
+              <h5 class="text-muted text-center vb nowrap">OBJECTS</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.col -->
+
+      <!--col -->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+          <div class="col-in row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <h3 class="counter text-center text-danger">3</h3>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <i data-icon="E" class="linea-icon linea-basic"></i>
+              <h5 class="text-muted text-center vb nowrap">BIZ CAPS</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.col -->
+
+      <!--col -->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+          <div class="col-in row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <h3 class="counter text-center text-danger">8/11</h3>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <i data-icon="E" class="linea-icon linea-basic"></i>
+              <h5 class="text-muted text-center vb nowrap">API</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="white-box">
+          <h3 class="box-title">Guidelines:</h3>
+          <div class="comment-center">
+            <div class="comment-body">
+              <div class="mail-contnet">
+                <span class="mail-desc">Use textsearch on top side to search for any related objects (biz capabilities, API, resources, journeys)</span>
+              </div>
+            </div>
+
+            <div class="comment-body">
+              <div class="mail-contnet">
+                <span class="mail-desc">Grid View - show object results in grid / tabular</span>
+                <span class="mail-desc">Graph View - show object results in linked network nodes</span>
+              </div>
+            </div>
+
+            <div class="comment-body">
+              <div class="mail-contnet">
+                <span class="mail-desc">Hover to any node to see summary view of selected node and double click on it will show detail information of respective node on this pane</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </row>
+  </div>
+</div>
+
+<script src="{{BaseUrl}}scripts/dashboard.js"></script>

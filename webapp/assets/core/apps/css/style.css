@@ -1,0 +1,145 @@
+.top-left-part {
+  width: 190px;
+}
+
+.footer {
+  left: 7px;
+  right: 7px;
+}
+
+.bg-title {
+  padding: 0px 15px 10px 0px;
+  height: 30px;
+  margin-bottom: 7px;
+}
+.bg-title h4 {
+  color: rgba(0,0,0,.5);
+  font-weight: 400;
+  margin-top: 0px;
+  font-size: 17px;
+}
+
+.white-box {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 7px;
+  margin-left: -7px;
+}
+.comment-center {
+  margin: 0 -10px;
+}
+.top-left-part {
+  background: #253a46;
+}
+
+h3, .h3 {
+  margin: 0px;
+}
+
+h5, .h5 {
+  font-size: unset;
+  margin-bottom: auto;
+}
+
+.col-in h3 {
+  font-size: 32px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.container-fluid {
+  padding-left: 25px;
+  padding-right: 5px;
+}
+
+.navmenu {
+  width: 220px;
+}
+
+.navbar-header .navbar-toggle {
+  padding: 9px 10px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #c8d1d6;
+}
+
+.navmenu-fixed-left{
+  top: 60px;
+}
+
+.navmenu-default, .navbar-default .navbar-offcanvas {
+  background-color: #516673;
+  border-color: #e7e7e7;
+}
+
+.btn {
+  border-radius: 4px;
+}
+
+.white-box .row{
+  margin-bottom: 3px;
+}
+
+.no-padding{
+  padding: 0px;
+}
+
+.btn-danger.disabled.focus, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger.focus, .btn-danger:focus, .btn-danger:hover,
+.btn-warning.disabled.focus, .btn-warning.disabled:focus, .btn-warning.disabled:hover, .btn-warning.focus, .btn-warning:focus, .btn-warning:hover,
+.btn-warning.active.focus, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning.focus, .btn-warning.focus:active, .btn-warning:active:focus, .btn-warning:active:hover, .btn-warning:focus, .open>.dropdown-toggle.btn-warning.focus, .open>.dropdown-toggle.btn-warning:focus, .open>.dropdown-toggle.btn-warning:hover,
+.btn-danger.active.focus, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger.focus, .btn-danger.focus:active, .btn-danger:active:focus, .btn-danger:active:hover, .btn-danger:focus, .open>.dropdown-toggle.btn-danger.focus, .open>.dropdown-toggle.btn-danger:focus, .open>.dropdown-toggle.btn-danger:hover {
+  border: 0px;
+}
+
+.k-grid td.k-state-selected:hover, .k-grid tr:hover {
+    color: #fff;
+    background-color: #2CA8FF;
+}
+
+.k-grid .k-button.k-state-focused, .k-grid .k-button.k-state-hover, .k-grid .k-button:focus, .k-grid .k-button:hover, .k-grid .k-draghandle:hover, .k-grid .k-other-month.k-state-hover .k-link, .k-grid .k-pager-wrap .k-link:hover,
+.k-grid .k-split-button:focus, .k-grid .k-state-hover, .k-grid .k-state-hover:hover, .k-grid .k-textbox:hover, div.k-filebrowser-dropzone em {
+    background-image: url(textures/highlight.png);
+    background-image: none,-webkit-gradient(linear,left top,left bottom,from(#FFFFFF),to(#FFFFFF));
+    background-image: none,-webkit-linear-gradient(top,#FFFFFF 0,#FFFFFF 100%);
+    background-image: none,linear-gradient(to bottom,#FFFFFF 0,#FFFFFF 100%);
+}
+
+.k-button.k-state-focused, .k-button.k-state-hover, .k-button:focus, .k-button:hover, .k-draghandle:hover, .k-other-month.k-state-hover .k-link, .k-pager-wrap .k-link:hover, .k-split-button:focus, .k-state-hover, .k-state-hover:hover, .k-textbox:hover, div.k-filebrowser-dropzone em {
+    background-image: url(textures/highlight.png);
+    background-image: none,-webkit-gradient(linear,left top,left bottom,from(#2da7ff),to(#2da7ff));
+    background-image: none,-webkit-linear-gradient(top,#2da7ff 0,#2da7ff 100%);
+    background-image: none,linear-gradient(to bottom,#2da7ff 0,#2da7ff 100%);
+}
+
+.k-draghandle.k-state-selected:hover, .k-ghost-splitbar-horizontal, .k-ghost-splitbar-vertical, .k-list>.k-state-highlight, .k-list>.k-state-selected, .k-marquee-color, .k-panel>.k-state-selected, .k-scheduler .k-scheduler-toolbar .k-state-selected, .k-scheduler .k-today.k-state-selected, .k-state-selected, .k-state-selected:link, .k-state-selected:visited {
+    color: #fff;
+    background-color: #2da7ff;
+    border-color: #2da7ff;
+}
+
+.k-button.k-state-hover, .k-button:hover {
+    color: #787878;
+    border-color: #dbdbdb;
+}
+
+@media (min-width: 768px){
+  .content-wrapper .top-left-part {
+    width: 190px;
+  }
+
+  .content-wrapper #page-wrapper {
+    margin-left: 0px;
+  }
+
+  .sidebar{
+     padding-top: 0px;
+  }
+
+  #page-wrapper {
+    position: inherit;
+    margin: 0px;
+  }
+}

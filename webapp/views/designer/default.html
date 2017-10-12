@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="{{BaseUrl}}plugins/api-designer/styles/api-designer-vendor.css"/>
+<link rel="stylesheet" href="{{BaseUrl}}plugins/api-designer/styles/api-designer.css"/>
+
+<style>
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+</style>
+
+<div class="row">
+  <div class="col-md-12" style="height: 888px;">
+
+    <div class="container">
+      <raml-editor></raml-editor>
+    </div>
+
+  </div>
+</div>
+
+<script src="{{BaseUrl}}plugins/api-designer/scripts/api-designer-parser.js"></script>
+
+<script>
+(function (w) {
+  if (!w.Worker) return;
+  var proxy = location.search.indexOf('bypassProxy=true') > -1 ? '' : '/proxy/';
+  try {
+    w.RAML.worker = new Worker('{{BaseUrl}}plugins/api-designer/scripts/api-designer-worker.js#parser=./api-designer-parser.js&proxy=' + proxy);
+  } catch (e) {
+    console.error('Failed to create worker, defaulting to main thread', e);
+  }
+})(window);
+</script>
+
+<script src="{{BaseUrl}}plugins/api-designer/scripts/api-designer-vendor.js"></script>
+<script src="{{BaseUrl}}plugins/api-designer/scripts/api-designer.js"></script>
+<script src="{{BaseUrl}}scripts/ramldesigner.js"></script>

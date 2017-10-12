@@ -1,0 +1,20 @@
+{
+  "product": {
+    "brand": "Brand Name",
+    "color": "Black",
+    "depth": "12 inches",
+    "description": "This is the full description of the product.",
+    "height": "12 inches",
+    "id": "1",
+    "image": "http://example.com/image.jpg",
+    "itemCondition": "New",
+    "keywords": "western, cowboy",
+    "manufacturer": "Manufacturer Name",
+    "model": "Black",
+    "sku": "SKU #",
+    "thumbnailUrl": "http://example.com/image-thumb.jpg",
+    "url": "http://example.com",
+    "weight": "12 pounds",
+    "width": "12 inches"
+  }
+}

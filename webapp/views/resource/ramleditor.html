@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="{{BaseUrl}}plugins/api-designer/styles/api-designer-vendor.css"/>
+<link rel="stylesheet" href="{{BaseUrl}}plugins/api-designer/styles/api-designer.css"/>
+
+<style>
+  @media (min-width: 1280px) {
+    .modal-lg {
+      width: 66%;
+    }
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-12 no-padding" style="height: 702px;">
+
+    <div id="ramlapp" class="container"></div>
+
+  </div>
+</div>
+
+<div class="modal fade in" id="modal-ramldet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-bind="with: ramldesigner">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<script src="{{BaseUrl}}plugins/api-designer/scripts/api-designer-parser.js"></script>
+
+<script>
+(function (w) {
+  if (!w.Worker) return;
+  var proxy = location.search.indexOf('bypassProxy=true') > -1 ? '' : '/proxy/';
+  try {
+    w.RAML.worker = new Worker('{{BaseUrl}}plugins/api-designer/scripts/api-designer-worker.js#parser=./api-designer-parser.js&proxy=' + proxy);
+  } catch (e) {
+    console.error('Failed to create worker, defaulting to main thread', e);
+  }
+})(window);
+</script>
+
+<script src="{{BaseUrl}}plugins/api-designer/scripts/api-designer-vendor.js"></script>
+<script src="{{BaseUrl}}plugins/api-designer/scripts/api-designer.js"></script>
+<script src="{{BaseUrl}}scripts/ramldesigner.js"></script>

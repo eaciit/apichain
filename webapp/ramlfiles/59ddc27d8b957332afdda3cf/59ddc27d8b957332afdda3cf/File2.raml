@@ -1,0 +1,20 @@
+#%RAML 1.0
+title: "Title2"
+
+securitySchemes:
+  security2:
+    type:
+  
+traceability:
+  trace2
+types:
+  test2: !include schema/test2.json
+
+/resource2:
+  description: "desc2"
+  get:
+    responses:
+      204:
+        body:
+          application/json:
+            schema: 

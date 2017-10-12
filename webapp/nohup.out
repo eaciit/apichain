@@ -1,0 +1,138 @@
+Read config: /data/goapp/src/eaciit/apichain/config/app.json
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+INFO 2017/10/12 07:42:04 Scan application apichain for controller registration
+INFO 2017/10/12 07:42:04 Registering Dashboard
+INFO 2017/10/12 07:42:04 Registering handler for /dashboard/default
+INFO 2017/10/12 07:42:04 Registering Designer
+INFO 2017/10/12 07:42:04 Registering handler for /designer/delete
+INFO 2017/10/12 07:42:04 Registering handler for /designer/editline
+INFO 2017/10/12 07:42:04 Registering handler for /designer/getramllist
+INFO 2017/10/12 07:42:04 Registering handler for /designer/list
+INFO 2017/10/12 07:42:04 Registering handler for /designer/newfolder
+INFO 2017/10/12 07:42:04 Registering handler for /designer/newraml
+INFO 2017/10/12 07:42:04 Registering handler for /designer/rename
+INFO 2017/10/12 07:42:04 Registering handler for /designer/save
+INFO 2017/10/12 07:42:04 Registering Login
+INFO 2017/10/12 07:42:04 Registering handler for /login/default
+INFO 2017/10/12 07:42:04 Registering handler for /login/do
+INFO 2017/10/12 07:42:04 Registering Resource
+INFO 2017/10/12 07:42:04 Registering handler for /resource/default
+INFO 2017/10/12 07:42:04 Registering handler for /resource/delete
+INFO 2017/10/12 07:42:04 Registering handler for /resource/getallresource
+INFO 2017/10/12 07:42:04 Registering handler for /resource/getdatabycode
+INFO 2017/10/12 07:42:04 Registering handler for /resource/getdatabyversionncode
+INFO 2017/10/12 07:42:04 Registering handler for /resource/getlistresourcebycode
+INFO 2017/10/12 07:42:04 Registering handler for /resource/getlistversionbycode
+INFO 2017/10/12 07:42:04 Registering handler for /resource/save
+INFO 2017/10/12 07:42:04 Registering MasterStage
+INFO 2017/10/12 07:42:04 Registering handler for /masterstage/default
+INFO 2017/10/12 07:42:04 Registering handler for /masterstage/delete
+INFO 2017/10/12 07:42:04 Registering handler for /masterstage/getallstage
+INFO 2017/10/12 07:42:04 Registering handler for /masterstage/save
+INFO 2017/10/12 07:42:04 Registering MasterUri
+INFO 2017/10/12 07:42:04 Registering handler for /masteruri/default
+INFO 2017/10/12 07:42:04 Registering handler for /masteruri/deletedata
+INFO 2017/10/12 07:42:04 Registering handler for /masteruri/getdata
+INFO 2017/10/12 07:42:04 Registering handler for /masteruri/savedata
+INFO 2017/10/12 07:42:04 Registering Logout
+INFO 2017/10/12 07:42:04 Registering handler for /logout/do
+INFO 2017/10/12 07:42:04 Registering MasterCountry
+INFO 2017/10/12 07:42:04 Registering handler for /mastercountry/default
+INFO 2017/10/12 07:42:04 Registering handler for /mastercountry/delete
+INFO 2017/10/12 07:42:04 Registering handler for /mastercountry/getallcountry
+INFO 2017/10/12 07:42:04 Registering handler for /mastercountry/save
+INFO 2017/10/12 07:42:04 Registering MasterSystem
+INFO 2017/10/12 07:42:04 Registering handler for /mastersystem/default
+INFO 2017/10/12 07:42:04 Registering handler for /mastersystem/delete
+INFO 2017/10/12 07:42:04 Registering handler for /mastersystem/getallsystem
+INFO 2017/10/12 07:42:04 Registering handler for /mastersystem/save
+INFO 2017/10/12 07:42:04 Registering MasterSchema
+INFO 2017/10/12 07:42:04 Registering handler for /masterschema/default
+INFO 2017/10/12 07:42:04 Registering handler for /masterschema/delete
+INFO 2017/10/12 07:42:04 Registering handler for /masterschema/getallschema
+INFO 2017/10/12 07:42:04 Registering handler for /masterschema/getdatabyname
+INFO 2017/10/12 07:42:04 Registering handler for /masterschema/save
+INFO 2017/10/12 07:42:04 Registering MasterHttpStatuses
+INFO 2017/10/12 07:42:04 Registering handler for /masterhttpstatuses/default
+INFO 2017/10/12 07:42:04 Registering handler for /masterhttpstatuses/delete
+INFO 2017/10/12 07:42:04 Registering handler for /masterhttpstatuses/getallhttpstatuses
+INFO 2017/10/12 07:42:04 Registering handler for /masterhttpstatuses/save
+INFO 2017/10/12 07:42:04 Add static /scripts/ from /data/goapp/src/eaciit/apichain/webapp/assets/core/apps/js
+INFO 2017/10/12 07:42:04 Add static /images/ from /data/goapp/src/eaciit/apichain/webapp/assets/img
+INFO 2017/10/12 07:42:04 Add static /plugins/ from /data/goapp/src/eaciit/apichain/webapp/assets/vendors
+INFO 2017/10/12 07:42:04 Add static /modules/ from /data/goapp/src/eaciit/apichain/webapp/assets/node_modules
+INFO 2017/10/12 07:42:04 Add static /files/ from /data/goapp/src/eaciit/apichain/webapp/ramlfiles
+INFO 2017/10/12 07:42:04 Add static /libs/ from /data/goapp/src/eaciit/apichain/webapp/assets/core/lib
+INFO 2017/10/12 07:42:04 Add static /styles/ from /data/goapp/src/eaciit/apichain/webapp/assets/core/apps/css
+INFO 2017/10/12 07:42:04 Registering handler for /status
+INFO 2017/10/12 07:42:04 Registering handler for /stop
+INFO 2017/10/12 07:42:04 Registering handler for /
+INFO 2017/10/12 07:42:04 Start listening on server 0.0.0.0:9034
+ERROR!  Invalid Username or password!
+ERROR!  Invalid Username or password!
+ERROR!  Invalid Username or password!
+ERROR!  Invalid Username or password!
+ERROR!  Invalid Username or password!
+ERROR!  Invalid Username or password!
+ERROR!  Invalid Username or password!
+ERROR!  Invalid Username or password!
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+INFO 2017/10/12 08:21:33 0.0.0.0:9034/masteruri/getdata 127.0.0.1:49840
+INFO 2017/10/12 08:21:34 0.0.0.0:9034/mastersystem/getallsystem 127.0.0.1:49842
+INFO 2017/10/12 08:21:34 0.0.0.0:9034/masterstage/getallstage 127.0.0.1:49844
+INFO 2017/10/12 08:21:34 0.0.0.0:9034/resource/getallresource 127.0.0.1:49838
+INFO 2017/10/12 08:21:34 0.0.0.0:9034/mastercountry/getallcountry 127.0.0.1:49848
+INFO 2017/10/12 08:21:34 0.0.0.0:9034/masterhttpstatuses/getallhttpstatuses 127.0.0.1:49846
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+[map[code:Code1 parent:ObjectIdHex("59ddc27d8b957332afdda3cf") prodcoveragesystem:[] testcoveragesystem:[] _id:ObjectIdHex("59ddc19c8b957332afdda3cd") prodcoveragecountry:[] testcoveragecountry:[] version:1.0 tag:[Tag] description:Desc1 uri:https://api.sc.net/core/trade name:Title1 raml:0 stage:59d239c3567c251c6c64d0b5] map[testcoveragecountry:[] _id:ObjectIdHex("59ddc2138b957332afdda3ce") name:Title1.2 raml:0 uri:https://api.sc.net/core/trade parent:ObjectIdHex("59ddc27d8b957332afdda3cf") version:1.2 prodcoveragesystem:[] testcoveragesystem:[] code:Code1.2 tag:[Tag1.2] stage:59d33b428b9573e0e510265f description:Desc1.2 prodcoveragecountry:[]]] <nil>
+[map[version:1.3 tag:[Tag1.3] raml:0 prodcoveragesystem:[] testcoveragesystem:[] _id:ObjectIdHex("59ddc27d8b957332afdda3cf") code:Code1.3 uri:https://api.sc.net/core/trade parent:ObjectIdHex("59ddc27d8b957332afdda3cf") stage:59d33b4c8b9573e0e5102660 prodcoveragecountry:[] name:Title1.3 description:Desc1.3 testcoveragecountry:[]]] <nil>
+INFO 2017/10/12 08:21:38 0.0.0.0:9034/resource/getlistversionbycode 127.0.0.1:50530
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+[map[stage:59d239c3567c251c6c64d0b5 code:Code1 description:Desc1 raml:0 parent:ObjectIdHex("59ddc27d8b957332afdda3cf") prodcoveragesystem:[] name:Title1 tag:[Tag] version:1.0 uri:https://api.sc.net/core/trade testcoveragecountry:[] testcoveragesystem:[] _id:ObjectIdHex("59ddc19c8b957332afdda3cd") prodcoveragecountry:[]] map[version:1.2 tag:[Tag1.2] raml:0 stage:59d33b428b9573e0e510265f parent:ObjectIdHex("59ddc27d8b957332afdda3cf") code:Code1.2 prodcoveragesystem:[] testcoveragecountry:[] testcoveragesystem:[] _id:ObjectIdHex("59ddc2138b957332afdda3ce") description:Desc1.2 name:Title1.2 uri:https://api.sc.net/core/trade prodcoveragecountry:[]]] <nil>
+[map[parent:ObjectIdHex("59ddc27d8b957332afdda3cf") prodcoveragesystem:[] _id:ObjectIdHex("59ddc27d8b957332afdda3cf") tag:[Tag1.3] raml:0 prodcoveragecountry:[] testcoveragecountry:[] version:1.3 uri:https://api.sc.net/core/trade testcoveragesystem:[] stage:59d33b4c8b9573e0e5102660 code:Code1.3 name:Title1.3 description:Desc1.3]] <nil>
+INFO 2017/10/12 08:21:38 0.0.0.0:9034/resource/getlistresourcebycode 127.0.0.1:50616
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+INFO 2017/10/12 08:22:30 0.0.0.0:9034/masteruri/getdata 127.0.0.1:59406
+INFO 2017/10/12 08:22:31 0.0.0.0:9034/masterhttpstatuses/getallhttpstatuses 127.0.0.1:59416
+INFO 2017/10/12 08:22:31 0.0.0.0:9034/mastersystem/getallsystem 127.0.0.1:59412
+INFO 2017/10/12 08:22:31 0.0.0.0:9034/masterstage/getallstage 127.0.0.1:59408
+INFO 2017/10/12 08:22:31 0.0.0.0:9034/mastercountry/getallcountry 127.0.0.1:59414
+INFO 2017/10/12 08:22:31 0.0.0.0:9034/resource/getallresource 127.0.0.1:59410
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+INFO 2017/10/12 08:22:44 0.0.0.0:9034/masteruri/getdata 127.0.0.1:33708
+INFO 2017/10/12 08:22:44 0.0.0.0:9034/mastersystem/getallsystem 127.0.0.1:33710
+INFO 2017/10/12 08:22:44 0.0.0.0:9034/mastercountry/getallcountry 127.0.0.1:33706
+INFO 2017/10/12 08:22:44 0.0.0.0:9034/masterhttpstatuses/getallhttpstatuses 127.0.0.1:33714
+INFO 2017/10/12 08:22:44 0.0.0.0:9034/resource/getallresource 127.0.0.1:33712
+INFO 2017/10/12 08:22:44 0.0.0.0:9034/masterstage/getallstage 127.0.0.1:33704
+INFO 2017/10/12 08:23:05 0.0.0.0:9034/resource/getlistversionbycode 127.0.0.1:37096
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+INFO 2017/10/12 08:23:06 0.0.0.0:9034/resource/save 127.0.0.1:37246
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+[] <nil>
+[map[raml:0 stage: _id:ObjectIdHex("59df266977b8a93cbd000004") name: version:1.0 parent:ObjectIdHex("59df266977b8a93cbd000004") description: uri: prodcoveragecountry:[] code: tag:[] prodcoveragesystem:[] testcoveragecountry:[] testcoveragesystem:[]]] <nil>
+INFO 2017/10/12 08:23:06 0.0.0.0:9034/resource/getlistresourcebycode 127.0.0.1:37252
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+INFO 2017/10/12 08:23:16 0.0.0.0:9034/resource/delete 127.0.0.1:38964
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+INFO 2017/10/12 08:23:16 0.0.0.0:9034/resource/getallresource 127.0.0.1:39002
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+[] <nil>
+[map[testcoveragesystem:[] code: uri:https://api.sc.com/individual/trade raml:0 prodcoveragesystem:[] parent:ObjectIdHex("59ddbe0b8b957329a62c2012") prodcoveragecountry:[] testcoveragecountry:[] version:1.0 description: tag:[] stage: _id:ObjectIdHex("59ddbe0b8b957329a62c2012") name:]] <nil>
+INFO 2017/10/12 08:23:19 0.0.0.0:9034/resource/getlistversionbycode 127.0.0.1:39424
+&{Host:go.eaciit.com:27123 Database:scbapichain UserName:eaciit Password:B1gD@ta Settings:map[]}
+[] <nil>
+[map[description: raml:0 testcoveragecountry:[] version:1.0 prodcoveragecountry:[] prodcoveragesystem:[] _id:ObjectIdHex("59ddbe0b8b957329a62c2012") code: name: testcoveragesystem:[] tag:[] stage: uri:https://api.sc.com/individual/trade parent:ObjectIdHex("59ddbe0b8b957329a62c2012")]] <nil>
+INFO 2017/10/12 08:23:19 0.0.0.0:9034/resource/getlistresourcebycode 127.0.0.1:39442

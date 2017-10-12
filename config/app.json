@@ -1,0 +1,11 @@
+{
+	"Name": "API Chain",
+	"Version": "0.1",
+	"WebRoot": "/data/goapp/src/eaciit/apichain/webapp",
+	"WebHost": "0.0.0.0:9034",
+	"Host": "go.eaciit.com:27123",
+	"Database": "scbapichain",
+	"Username": "eaciit",
+	"Password": "B1gD@ta",
+	"RamlPath": "/data/goapp/src/eaciit/apichain/webapp/ramlfiles"
+}

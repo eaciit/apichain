@@ -1,0 +1,29 @@
+{
+  "additionalProperties": false,
+  "description": "Describes how an API include security scheme definitions",
+  "properties": {
+    "errors": {
+      "$ref": "spec-1.0/api.json#/definitions/RAML10/properties/errors"
+    },
+    "ramlVersion": {
+      "$ref": "spec-1.0/api.json#/definitions/RAML10/properties/ramlVersion"
+    },
+    "specification": {
+      "$ref": "spec-1.0/security.json#/definitions/SecuritySchemeFragment"
+    },
+    "type": {
+      "enum": [
+        "SecurityScheme",
+        "OAuth2SecurityScheme"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "ramlVersion",
+    "type",
+    "errors",
+    "specification"
+  ],
+  "type": "object"
+}

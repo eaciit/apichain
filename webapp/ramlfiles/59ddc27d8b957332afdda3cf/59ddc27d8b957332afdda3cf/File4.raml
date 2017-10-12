@@ -1,0 +1,27 @@
+#%RAML 1.0
+title: "File4"
+
+securitySchemes:
+  auth20:
+    type:
+  auth10:
+    type:
+  
+traceability:
+  
+
+types:
+  test1: !include schema/test1.json
+
+/R5:
+  description: "R5"
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: 
+      203:
+        body:
+          application/json:
+            schema: 

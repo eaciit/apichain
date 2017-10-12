@@ -1,0 +1,38 @@
+#%RAML 1.0
+title: "Title1"
+
+securitySchemes:
+  security_1:
+    type:
+  security2:
+    type:
+  
+traceability:
+  yaya
+types:
+  test1: !include schema/test1.json
+  test2: !include schema/test2.json
+  aschema: !include schema/aschema.json
+
+/resource1:
+  description: "description1"
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: 
+      201:
+        body:
+          application/json:
+            schema: 
+  post:
+    responses:
+      202:
+        body:
+          application/json:
+            schema: 
+      203:
+        body:
+          application/json:
+            schema: 
