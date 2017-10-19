@@ -2,7 +2,7 @@
 
 To build the images, run this command inside repository directory
 docker build -t apichain .
- 
+
 To run the build images for demo/one time run
 docker run --init -ti --rm -p 9150:9150 apichain
  
