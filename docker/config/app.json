@@ -1,0 +1,11 @@
+{
+	"Name": "API Chain",
+	"Version": "0.1",
+	"WebRoot": "/srv/app/src/eaciit/apichain/webapp/",
+	"WebHost": "0.0.0.0:9150",
+	"Host": "localhost:27017",
+	"Database": "scbapichain",
+	"Username": "",
+	"Password": "",
+	"RamlPath": "/srv/app/src/eaciit/apichain/webapp/ramlfiles"
+}

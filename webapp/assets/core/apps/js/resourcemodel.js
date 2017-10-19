@@ -117,7 +117,8 @@ resmodel.render = function(){
       var paths = res.data;
 
       paths.forEach(function(path){
-        pushRamlData(path, resmodel.ramldata);
+        var fixedPath = window.location.origin + "/files" + path;
+        pushRamlData(fixedPath, resmodel.ramldata);
       });
 
     	resmodel.renderGraph();

@@ -31,25 +31,28 @@
       <div class="row" class="row" data-bind="visible: (stsForm() == 'form' && pageProcessing() == false)">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-3">
-              <label style="width: 70px;">Version</label>
+            <div class="col-md-4">
+              <div class="form-inline">
+                <div class="form-group">
+                  <label for="dd-version">Version</label>
+                  <input id="dd-version" class="form-control" data-bind="kendoDropDownList: { data: listVersion, value: selectedVersion }" />
+                </div>
 
-              <input id="dd-version" data-bind="kendoDropDownList: { data: listVersion, value: selectedVersion }" style="width: 150px"/>
-
-              <button type="button" class="btn btn-info btn-fill pull-right" data-toggle="modal" data-target="#modal-version">Manage Version</button>
+                <button type="button" class="btn btn-info btn-fill" data-toggle="modal" data-target="#modal-version">Manage Version</button>
+              </div>
             </div>
 
-            <div class="col-md-6" style="text-align: center;">
+            <div class="col-md-4" style="text-align: center;">
               <button type="button" class="btn btn-success btn-fill" data-toggle="modal" data-target="#modal-ramldet" data-bind="visible: stsTabForm() == 'raml'">Open RAML Details</button>
             </div>
 
-            <div class="button-container col-md-3">
+            <div class="button-container col-md-4">
               <button type="button" class="btn btn-info btn-fill pull-right" onclick="saveResource()">Save</button>
               <button type="button" class="btn btn-danger btn-fill pull-right" onclick="deleteResource()" data-bind="visible: stsDataForm() != 'new'">Delete</button>
 
               <div class="btn-group pull-right" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-info btn-fill" data-toggle="modal" data-target="#modal-newraml">New RAML</button>
-                <!-- <button type="button" class="btn btn-info btn-fill">Delete RAML</button> -->
+                <button type="button" class="btn btn-info btn-fill" data-toggle="modal" data-target="#modal-upload">Upload File</button>
                 <!-- <button type="button" class="btn btn-info btn-fill">Convert to Swagger</button> -->
               </div>
 
@@ -63,7 +66,6 @@
               <li class="active"><a data-toggle="tab" href="#tab-form" onclick="tabdetailclick()">Detail</a></li>
               <li><a data-toggle="tab" href="#tab-raml" onclick="bindRaml()">RAML</a></li>
               <li><a data-toggle="tab" href="#tab-model" onclick="resmodel.render()">Resource Model</a></li>
-              <li><a data-toggle="tab" href="#tab-log" onclick="tablogclick()">Log</a></li>
             </ul>
             <br>
 
@@ -73,21 +75,21 @@
                   <div class="form-group row">
                     <label for="example-text-input" class="col-md-2 col-form-label">Code</label>
                     <div class="col-md-10">
-                      <input type="text" placeholder="Code" id="txtCode" class="form-control" data-bind="value: code, disable: selectedVersion() == ''" />
+                      <input type="text" placeholder="Code" id="txtCode" class="form-control" data-bind="value: code, valueUpdate: 'afterkeydown', disable: selectedVersion() == ''" />
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="example-text-input" class="col-md-2 col-form-label">Title</label>
                     <div class="col-md-10">
-                      <input type="text" placeholder="Title" class="form-control" data-bind="value: name, disable: selectedVersion() == ''" />
+                      <input type="text" placeholder="Title" class="form-control" data-bind="value: name, valueUpdate: 'afterkeydown', disable: selectedVersion() == ''" />
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="example-text-input" class="col-md-2 col-form-label">Description</label>
                     <div class="col-md-10">
-                      <input type="text" placeholder="Description" class="form-control" data-bind="value: description, disable: selectedVersion() == ''" />
+                      <input type="text" placeholder="Description" class="form-control" data-bind="value: description, valueUpdate: 'afterkeydown', disable: selectedVersion() == ''" />
                     </div>
                   </div>
 
@@ -98,7 +100,8 @@
                         dataTextField: 'name',
                         dataValueField: '_id',
                         data: stageSource,
-                        value: stage
+                        value: stage,
+                        optionLabel: 'Select stage'
                       }" />
                     </div>
                   </div>
@@ -106,7 +109,7 @@
                   <div class="form-group row">
                     <label for="example-text-input" class="col-md-2 col-form-label">Tag</label>
                     <div class="col-md-10">
-                      <input type="text" placeholder="Tag" class="form-control" data-bind="value: selectedTag, disable: selectedVersion() == ''" />
+                      <input type="text" placeholder="Tag" class="form-control" data-bind="value: selectedTag, valueUpdate: 'afterkeydown', disable: selectedVersion() == ''" />
                     </div>
                   </div>
 
@@ -115,20 +118,19 @@
                     <div class="col-md-4">
                       <input class="form-control" data-bind="kendoDropDownList: {
                         data: baseUriSource,
-                        value: baseuri
+                        value: baseuri,
+                        optionLabel: 'BaseUri'
                       }" />
                     </div>
                     <div class="col-md-3">
                       <input class="form-control" data-bind="kendoDropDownList: {
                         data: domainSource,
-                        value: domain
+                        value: domain,
+                        optionLabel: 'Select domain'
                       }" />
                     </div>
                     <div class="col-md-3">
-                      <input class="form-control" data-bind="kendoDropDownList: {
-                        data: subDomainSource,
-                        value: subdomain
-                      }" />
+                      <input type="text" placeholder="Subdomain" class="form-control" data-bind="value: subdomain, valueUpdate: 'afterkeydown'" />
                     </div>
                     <label for="example-text-input" class="col-md-10 col-md-offset-2 col-form-label" data-bind="text: uri"></label>
                   </div>
@@ -184,11 +186,6 @@
               <div id="tab-model"  class="tab-pane fade ">
                 <div class="col-md-12 no-padding">
                   {{template "resourcemodel.html"}}
-                </div>
-              </div>
-
-              <div id="tab-log"  class="tab-pane fade ">
-                <div class="col-md-12 no-padding">
                 </div>
               </div>
             </div>
@@ -270,128 +267,99 @@
       </div>
 
       <div class="modal-body">
-        <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">File Name</label>
-          <div class="col-md-10">
-            <input type="text" placeholder="File Name" class="form-control" data-bind="value: filename" />
-          </div>
-        </div>
+        {{template "newramlform.html"}}
+      </div>
 
-        <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">Title</label>
-          <div class="col-md-10">
-            <input type="text" placeholder="Title" class="form-control" data-bind="value: title" />
-          </div>
-        </div>
+      <div class="modal-footer">
+        <button class="btn btn-info btn-fill pull-right" data-bind="click: saveRaml">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal fade" id="modal-oauth2" tabindex="-1" role="dialog" aria-labelledby="modaloauth2" data-bind="with: nr.currentSecuritySchemes">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="modaloauth2">You are choosing oauth-2!</h4>
+      </div>
+
+      <div class="modal-body" data-bind="with: currentBody">
         <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">Security</label>
-          <div class="col-md-10" data-bind="foreach: securitySchemes">
+          <label for="example-text-input" class="col-md-2 col-form-label">Response</label>
+          <div class="col-md-10" data-bind="visible: responses().length > 0, foreach: responses">
             <div class="form-group row">
-              <div class="col-md-12">
-                <input type="text" placeholder="Security Name" class="form-control" data-bind="value: name" />
+              <div class="col-md-3">
+                <input class="form-control" data-bind="kendoDropDownList: { data: nr.httpResponseSource, value: code, optionLabel: 'Select response code' }" />
+              </div>
+
+              <div class="col-md-8">
+                <textarea class="form-control" rows="5" data-bind="value: description" placeholder="Response Description"> </textarea>
+              </div>
+
+              <div class="col-md-1">
+                <button class="btn btn-danger btn-fill" data-bind="click: $parent.removeElement">-</button>
               </div>
             </div>
           </div>
-          <div class="col-md-10 col-md-offset-2">
-            <button class="btn btn-info btn-fill pull-right" data-bind="click: addSecurityScheme">New Security Scheme</button>
+
+          <div class="col-md-10" data-bind="css: { 'col-md-offset-2': responses().length > 0 }">
+            <button class="btn btn-info btn-fill pull-right" data-bind="click: addResponse">New Response</button>
           </div>
         </div>
 
         <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">Traceability</label>
-          <div class="col-md-10">
-            <textarea class="form-control" rows="5" data-bind="value: traceability"> </textarea>
+          <label for="example-text-input" class="col-md-4 col-form-label">authorizationUri</label>
+          <div class="col-md-8">
+            <input type="text" placeholder="authorizationUri" class="form-control" data-bind="value: authorizationUri" />
           </div>
         </div>
 
         <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">Schemas</label>
-          <div class="col-md-7">
-            <select class="form-control" data-bind="kendoMultiSelect: { dataTextField: 'text', dataValueField: 'value', data: schemaSource, value: selectedSchema }"></select>
-          </div>
-          <label for="example-text-input" class="col-md-1 col-form-label">Or</label>
-          <div class="col-md-2">
-            <button type="button" class="btn btn-info btn-fill pull-right" data-toggle="modal" data-target="#modal-newsch">New Schema</button>
+          <label for="example-text-input" class="col-md-4 col-form-label">accessTokenUri</label>
+          <div class="col-md-8">
+            <input type="text" placeholder="accessTokenUri" class="form-control" data-bind="value: accessTokenUri" />
           </div>
         </div>
 
         <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">Resource name</label>
-          <div class="col-md-10">
-            <input type="text" placeholder="Resource Name" class="form-control" data-bind="value: resourceName" />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">Description</label>
-          <div class="col-md-10">
-            <input type="text" placeholder="Description" class="form-control" data-bind="value: description" />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="example-text-input" class="col-md-2 col-form-label">Method</label>
-          <div class="col-md-10">
-            <div class="form-group row">
-              <div class="col-md-12">
-                <input type="checkbox" data-bind="checked: isMethodGet" /> Get<br/>
-              </div>
-            </div>
-
-            <div class="form-group row" data-bind="visible: isMethodGet">
-              <div class="col-md-12">
-                <div class="form-group row">
-                  <label for="example-text-input" class="col-md-2 col-form-label">Response</label>
-                  <div class="col-md-10" data-bind="foreach: methodGetResponses">
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <input class="form-control" data-bind="kendoDropDownList: { data: nr.httpResponseMaster, value: code }" />
-                      </div>
-                      <!-- <div class="col-md-9">
-                        <input class="form-control" data-bind="kendoDropDownList: { dataTextField: 'name', dataValueField: 'name', data: nr.selectedSchema, value: body }" />
-                      </div> -->
-                    </div>
-                  </div>
-                  <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-info btn-fill pull-right" data-bind="click: addGetResponse">New Response</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-md-12">
-                <input type="checkbox" data-bind="checked: isMethodPost" /> Post<br/>
-              </div>
-            </div>
-
-            <div class="form-group row" data-bind="visible: isMethodPost">
-              <div class="col-md-12">
-                <div class="form-group row">
-                  <label for="example-text-input" class="col-md-2 col-form-label">Response</label>
-                  <div class="col-md-10" data-bind="foreach: methodPostResponses">
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <input class="form-control" data-bind="kendoDropDownList: { data: nr.httpResponseMaster, value: code }" />
-                      </div>
-                      <!-- <div class="col-md-9">
-                        <input class="form-control" data-bind="kendoDropDownList: { dataTextField: 'name', dataValueField: 'name', data: nr.selectedSchema, value: body }" />
-                      </div> -->
-                    </div>
-                  </div>
-                  <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-info btn-fill pull-right" data-bind="click: addPostResponse">New Response</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <label for="example-text-input" class="col-md-4 col-form-label">authorizationGrants</label>
+          <div class="col-md-8">
+            <input type="text" placeholder="authorizationGrants" class="form-control" data-bind="value: authorizationGrants" />
           </div>
         </div>
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-info btn-fill pull-right" data-bind="click: saveRaml">Save</button>
+        <button class="btn btn-info btn-fill pull-right" data-bind="click: nr.currentSecuritySchemes().save">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-upload" tabindex="-1" role="dialog" aria-labelledby="modalupload">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="modalupload">Upload RAML or JSON Schema File</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div>Destination: </div>
+          <label class="radio-inline">
+            <input type="radio" name="uploadDestination" value="root" data-bind="checked: uploadDestination" /> root
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="uploadDestination" value="schema" data-bind="checked: uploadDestination" /> /schema
+          </label>
+        </div>
+
+        <div class="row">
+          <input type="file" name="batchFile" id="batchFile" title="Select file" accept=".raml,.json" />
+        </div>
       </div>
     </div>
   </div>

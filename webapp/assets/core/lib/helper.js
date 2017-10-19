@@ -40,7 +40,7 @@ var findValues = function(obj, key){
 	return findValuesHelper(obj, key, []);
 }
 
-function cleanArray(actual) {
+var cleanArray = function(actual) {
   var newArray = new Array();
   for (var i = 0; i < actual.length; i++) {
     if (actual[i]) {
@@ -48,4 +48,17 @@ function cleanArray(actual) {
     }
   }
   return newArray;
+}
+
+var IsJsonString = function(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
+var jsonAttrStringify = function(jsonstring){
+  return jsonstring.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?: /g, '"$2": ');
 }

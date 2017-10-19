@@ -162,3 +162,7 @@
     background-position: 50% 50%;
     border-color: #dbdbdb;
 }
+
+.col-form-label{
+  padding-top: 5px;
+}

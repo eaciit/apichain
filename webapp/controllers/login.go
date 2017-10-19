@@ -40,15 +40,19 @@ func (c *Login) Do(k *knot.WebContext) interface{} {
 		return h.ErrorResult(err)
 	}
 
-	ctx := c.Ctx.Connection
+	conn, err := h.PrepareConnection()
+	defer conn.Close()
+	if err != nil {
+		return h.CreateResult(false, nil, err.Error())
+	}
 
 	filter := []*db.Filter{}
 	filter = append(filter, db.Eq("username", formdata.Username))
 
-	csr, err := ctx.NewQuery().Select().From("SysUsers").Where(filter...).Cursor(nil)
+	csr, err := conn.NewQuery().From("SysUsers").Where(filter...).Cursor(nil)
 	defer csr.Close()
 	if err != nil {
-		return h.ErrorResult(err)
+		return h.CreateResult(false, nil, err.Error())
 	}
 
 	res := make([]m.SysUserModel, 0)

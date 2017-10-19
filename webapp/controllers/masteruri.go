@@ -26,14 +26,20 @@ func (c *MasterUri) Default(k *knot.WebContext) interface{} {
 func (c *MasterUri) GetData(r *knot.WebContext) interface{} {
 	r.Config.OutputType = knot.OutputJson
 
-	crsData, err := c.Ctx.Find(NewUriModel(), tk.M{})
-	defer crsData.Close()
+	conn, err := PrepareConnection()
+	defer conn.Close()
+	if err != nil {
+		return CreateResult(false, nil, err.Error())
+	}
+
+	csr, err := conn.NewQuery().From(NewUriModel().TableName()).Cursor(nil)
+	defer csr.Close()
 	if err != nil {
 		return CreateResult(false, nil, err.Error())
 	}
 
 	data := []tk.M{}
-	err = crsData.Fetch(&data, 0, false)
+	err = csr.Fetch(&data, 0, false)
 	if err != nil {
 		return CreateResult(false, nil, err.Error())
 	}
@@ -76,7 +82,10 @@ func (c *MasterUri) DeleteData(k *knot.WebContext) interface{} {
 		return CreateResult(false, nil, err.Error())
 	}
 
-	err = c.Ctx.Connection.
+	ctx := c.Ctx.Connection
+	defer ctx.Close()
+
+	err = ctx.
 		NewQuery().
 		From(NewUriModel().TableName()).
 		Where(db.Eq("_id", bson.ObjectIdHex(p.GetString("_id")))).

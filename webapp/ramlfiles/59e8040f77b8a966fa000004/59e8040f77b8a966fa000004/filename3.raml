@@ -1,0 +1,44 @@
+#%RAML 1.0
+title: "filename3"
+baseUri: https://api.sc.com/individual/trade
+
+securitySchemes:
+  sec3:
+    description: |
+      
+    type: OAuth 2.0
+    describedBy:
+      headers:
+        Authorization:
+          description: |
+            Used to send a valid OAuth 2 access token. Do not use
+            with the 'access_token' query string parameter.
+          type: string
+      queryParameters:
+        access_token:
+          description: |
+            Used to send a valid OAuth 2 access token. Do not use together with
+            the 'Authorization' header
+          type: string
+      responses:
+        202:
+          description: |
+            response desc
+    settings:
+      authorizationUri: 
+      accessTokenUri: 
+      authorizationGrants: 
+
+types:
+  newschema2: !include schema/newschema2.json
+
+/resource3:
+  description: "resource3 desc"
+  post:
+    headers:
+      trace: string
+    responses:
+      200:
+        body:
+          application/json:
+            schema: newschema2

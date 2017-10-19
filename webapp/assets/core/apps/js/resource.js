@@ -31,7 +31,6 @@ listView.change = function() {
 var stageSource = ko.observableArray([]);
 var baseUriSource = ko.observableArray([]);
 var domainSource = ko.observableArray([]);
-var subDomainSource = ko.observableArray([]);
 
 var resourceTemplate = {
   id: "",
@@ -44,7 +43,7 @@ var resourceTemplate = {
   stage: null,
   baseuri: null,
   domain: null,
-  subdomain: null,
+  subdomain: "",
   parent: "",
   prodcoveragecountry :[],
   prodcoveragesystem :[],
@@ -92,7 +91,8 @@ selectedResource.subscribe(function(v){
 
     if( ! v.baseuri()) v.baseuri(baseUriSource()[0]);
     if( ! v.domain()) v.domain(domainSource()[0]);
-    if( ! v.subdomain()) v.subdomain(subDomainSource()[0]);
+    if( ! v.subdomain()) v.subdomain("");
+
 
     v.uri = ko.computed(function(){
       return "https://" + v.baseuri() + (v.baseuri() ? ((v.domain() ? "/" : "") + v.domain() + (v.domain() ? ((v.subdomain() ? "/" : "") + v.subdomain()) : "")) : "");
@@ -340,6 +340,8 @@ var tablogclick = function(){
   syncform();
 }
 
+var uploadDestination = ko.observable("root");
+
 $(document).ready(function () {
   callGrid();
 
@@ -353,18 +355,44 @@ $(document).ready(function () {
 
     var domain = res.data.find(function(v){ return v.Name == "DOMAIN" });
     if(domain) domainSource(domain.Options);
-
-    var subdomain = res.data.find(function(v){ return v.Name == "SUB_DOMAIN" });
-    if(subdomain) subDomainSource(subdomain.Options);
   });
 
   ajaxPost("/mastercountry/getallcountry", { }, function(res){
     listView.countryItems(res.Data);
   });
+
   ajaxPost("/mastersystem/getallsystem", { }, function(res){
     listView.systemItems(res.Data);
   });
+
   listView.template = kendo.template('<div class="list-option"><p>#= name #</p></div>');
+
+  $("#batchFile").kendoUpload({
+    async: {
+      saveUrl: '/designer/upload',
+      autoUpload: false
+    },
+    validation: {
+      allowedExtensions: [".raml", ".json"]
+    },
+    upload: function (e) {
+      e.data = {
+        parent: selectedResource().parent(),
+        id: selectedResource()._id(),
+        additionalPath: (uploadDestination() == "root" ? "/" : "/schema")
+      };
+    },
+    success: function(e){
+      if(stsTabForm() == 'raml'){
+        refreshEditor();
+      }
+    },
+    multiple: false,
+    localization: {
+      select: "Select a file",
+      uploadSelectedFiles: "Send"
+    }
+  });
 });
 
 //user is "finished typing," do something

@@ -1,0 +1,180 @@
+<div class="form-group row">
+  <label for="example-text-input" class="col-md-2 col-form-label">File Name</label>
+  <div class="col-md-10">
+    <input type="text" placeholder="File Name" class="form-control" data-bind="value: filename" />
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-md-2 col-form-label">Security</label>
+
+  <div class="col-md-10" data-bind="visible: securitySchemes().length > 0, foreach: securitySchemes">
+    <div class="form-group row">
+      <div class="col-md-4">
+        <input type="text" placeholder="Security Name" class="form-control" data-bind="value: name" />
+      </div>
+
+      <div class="col-md-5" data-bind="css: { 'col-md-5': (type() == 'OAuth 2.0'), 'col-md-7': (type() != 'OAuth 2.0') }">
+        <input class="form-control" data-bind="kendoDropDownList: { data: securitySchemesSource, value: type, select: changed, optionLabel: 'Select security type' }" />
+      </div>
+
+      <div class="col-md-2" data-bind="visible: type() == 'OAuth 2.0'">
+        <button class="btn btn-info btn-fill col-md-12" data-bind="click: showDetails"><i class="fa fa-edit"></i></button>
+      </div>
+
+      <div class="col-md-1">
+        <button class="btn btn-danger btn-fill" data-bind="click: $parent.removeElement('securitySchemes')">-</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-10" data-bind="css: { 'col-md-offset-2': securitySchemes().length > 0 }">
+    <button class="btn btn-info btn-fill pull-right" data-bind="click: addSecurityScheme">New Security Scheme</button>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-md-2 col-form-label">Schemas</label>
+  <div class="col-md-7">
+    <select class="form-control" data-placeholder="Select Schema" data-bind="kendoMultiSelect: { dataTextField: 'text', dataValueField: 'value', data: schemaSource, value: selectedSchema }"></select>
+  </div>
+  <label for="example-text-input" class="col-md-1 col-form-label">Or</label>
+  <div class="col-md-2">
+    <button type="button" class="btn btn-info btn-fill pull-right" data-toggle="modal" data-target="#modal-newsch">New Schema</button>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-md-2 col-form-label">Resource name</label>
+  <div class="col-md-10">
+    <input type="text" placeholder="Resource Name" class="form-control" data-bind="value: resourceName, valueUpdate: 'afterkeydown'" />
+  </div>
+</div>
+
+<div class="form-group row" data-bind="visible: (resourceName() != '')">
+  <label for="example-text-input" class="col-md-2 col-form-label">Description</label>
+  <div class="col-md-10">
+    <input type="text" placeholder="Description" class="form-control" data-bind="value: description" />
+  </div>
+</div>
+
+<div class="form-group row" data-bind="visible: (resourceName() != '')">
+  <label for="example-text-input" class="col-md-2 col-form-label">Method</label>
+  <div class="col-md-10">
+    <div class="form-group row">
+      <div class="col-md-12">
+        <input type="checkbox" data-bind="checked: isMethodGet" /> Get<br/>
+      </div>
+    </div>
+
+    <div class="form-group row" data-bind="visible: isMethodGet">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Traceability</label>
+
+          <div class="col-md-10" data-bind="visible: methodGetTraceabilities().length > 0, foreach: methodGetTraceabilities">
+            <div class="form-group row">
+              <div class="col-md-5">
+                <input type="text" placeholder="Name" class="form-control" data-bind="value: name" />
+              </div>
+
+              <div class="col-md-6">
+                <input class="form-control" data-bind="kendoDropDownList: { data: nr.traceabilitySource, value: body, optionLabel: 'Select traceability type' }" />
+              </div>
+
+              <div class="col-md-1">
+                <button class="btn btn-danger btn-fill" data-bind="click: $parent.removeElement('methodGetTraceabilities')">-</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-10" data-bind="css: { 'col-md-offset-2': methodGetTraceabilities().length > 0 }">
+            <button class="btn btn-info btn-fill pull-right" data-bind="click: addGetTraceability">New Traceability</button>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Response</label>
+
+          <div class="col-md-10" data-bind="visible: methodGetResponses().length > 0, foreach: methodGetResponses">
+            <div class="form-group row">
+              <div class="col-md-5">
+                <input class="form-control" data-bind="kendoDropDownList: { data: nr.httpResponseSource, value: code, optionLabel: 'Select response code' }" />
+              </div>
+
+              <div class="col-md-6">
+                <input class="form-control" data-bind="kendoDropDownList: { dataTextField: 'name', dataValueField: 'name', data: nr.selectedSchema, value: body, optionLabel: 'Select response type' }" />
+              </div>
+
+              <div class="col-md-1">
+                <button class="btn btn-danger btn-fill" data-bind="click: $parent.removeElement('methodGetResponses')">-</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-10" data-bind="css: { 'col-md-offset-2': methodGetResponses().length > 0 }">
+            <button class="btn btn-info btn-fill pull-right" data-bind="click: addGetResponse">New Response</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-12">
+        <input type="checkbox" data-bind="checked: isMethodPost" /> Post<br/>
+      </div>
+    </div>
+
+    <div class="form-group row" data-bind="visible: isMethodPost">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Traceability</label>
+
+          <div class="col-md-10" data-bind="visible: methodPostTraceabilities().length > 0, foreach: methodPostTraceabilities">
+            <div class="form-group row">
+              <div class="col-md-5">
+                <input type="text" placeholder="Name" class="form-control" data-bind="value: name" />
+              </div>
+
+              <div class="col-md-6">
+                <input class="form-control" data-bind="kendoDropDownList: { data: nr.traceabilitySource, value: body, optionLabel: 'Select traceability type' }" />
+              </div>
+
+              <div class="col-md-1">
+                <button class="btn btn-danger btn-fill" data-bind="click: $parent.removeElement('methodPostTraceabilities')">-</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-10" data-bind="css: { 'col-md-offset-2': methodPostTraceabilities().length > 0 }">
+            <button class="btn btn-info btn-fill pull-right" data-bind="click: addPostTraceability">New Traceability</button>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Response</label>
+
+          <div class="col-md-10" data-bind="visible: methodPostResponses().length > 0, foreach: methodPostResponses">
+            <div class="form-group row">
+              <div class="col-md-5">
+                <input class="form-control" data-bind="kendoDropDownList: { data: nr.httpResponseSource, value: code, optionLabel: 'Select response code' }" />
+              </div>
+
+              <div class="col-md-6">
+                <input class="form-control" data-bind="kendoDropDownList: { dataTextField: 'name', dataValueField: 'name', data: nr.selectedSchema, value: body, optionLabel: 'Select response type' }" />
+              </div>
+
+              <div class="col-md-1">
+                <button class="btn btn-danger btn-fill" data-bind="click: $parent.removeElement('methodPostResponses')">-</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-10" data-bind="css: { 'col-md-offset-2': methodPostResponses().length > 0 }">
+            <button class="btn btn-info btn-fill pull-right" data-bind="click: addPostResponse">New Response</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,7 +19,7 @@ function myFileSystem($http, $q, config, $rootScope) {
   service.directory = function (path) {
     var deferred = $q.defer();
 
-    ajaxPost(handler + "/list", { path: ramldesigner.ramlAddr().replace(filesUrl, "") }, function(res){
+    ajaxPost(handler + "/list", { parent: selectedResource().parent(), id: selectedResource()._id() }, function(res){
       if(res.success){
         $rootScope.$broadcast('event:notification', {
           message : 'Directory loaded.',
@@ -77,7 +77,7 @@ function myFileSystem($http, $q, config, $rootScope) {
   service.remove = function (path, name) {
     var deferred = $q.defer();
 
-    ajaxPost(handler + "/delete", { path: path, name: name }, function(res){
+    ajaxPost(handler + "/delete", { parent: selectedResource().parent(), id: selectedResource()._id(), path: path, name: name }, function(res){
       if(res.success){
         $rootScope.$broadcast('event:notification', {
           message : 'File removed.',
@@ -105,7 +105,7 @@ function myFileSystem($http, $q, config, $rootScope) {
       return deferred.promise;
     }
 
-    ajaxPost(handler + "/save", { path: path, contents: contents }, function(res){
+    ajaxPost(handler + "/save", { parent: selectedResource().parent(), id: selectedResource()._id(), path: path, contents: contents }, function(res){
       if(res.success){
         $rootScope.$broadcast('event:notification', {
           message : 'File saved.',
@@ -129,7 +129,7 @@ function myFileSystem($http, $q, config, $rootScope) {
   service.createFolder = function(path) {
 		var deferred = $q.defer();
 
-    ajaxPost(handler + "/newfolder", { path: path }, function(res){
+    ajaxPost(handler + "/newfolder", { parent: selectedResource().parent(), id: selectedResource()._id(), path: path }, function(res){
       if(res.success){
   			$rootScope.$broadcast('event:notification', {
   				message : 'Folder created.',
@@ -153,7 +153,7 @@ function myFileSystem($http, $q, config, $rootScope) {
   service.rename = function(source, destination) {
 		var deferred = $q.defer();
 
-    ajaxPost(handler + "/rename", { source: source, destination: destination }, function(res){
+    ajaxPost(handler + "/rename", { parent: selectedResource().parent(), id: selectedResource()._id(), source: source, destination: destination }, function(res){
       if(res.success){
   			$rootScope.$broadcast('event:notification', {
   				message : 'File renamed.',
@@ -208,7 +208,6 @@ var getLines = function(){
 }
 
 var bindRaml = function(){
-  $("#ramlapp").html("");
   stsTabForm("raml");
   syncform();
 
@@ -243,6 +242,7 @@ var saveFromForm = function(){
 }
 
 var refreshEditor = function(){
+  $("#ramlapp").html("");
   angular.module('ramlEditorApp')
     .config(function (fileSystemProvider) {
       fileSystemProvider.setFileSystemFactory(myFileSystem);

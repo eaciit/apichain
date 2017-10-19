@@ -85,6 +85,7 @@ func (m *ResourceModel) Delete() error {
 	if err != nil {
 		return err
 	}
+
 	err = conn.NewQuery().
 		From("ResourceArchive").
 		Delete().
@@ -232,6 +233,7 @@ func (m *ResourceModel) ListVersionbyCode() ([]string, error) {
 		From(m.TableName()).
 		Where(dbox.And(dbFilter...)).
 		Cursor(nil)
+	defer csr.Close()
 	if e != nil {
 		tk.Println(result2, e)
 	} else if csr != nil {
@@ -286,6 +288,7 @@ func (m *ResourceModel) CrawlResourcebyCode() (interface{}, error) {
 		From(m.TableName()).
 		Where(dbox.And(dbFilter...)).
 		Cursor(nil)
+	defer csr.Close()
 	if e != nil {
 		tk.Println(result2, e)
 	} else if csr != nil {
@@ -303,7 +306,6 @@ func (m *ResourceModel) CrawlResourcebyCode() (interface{}, error) {
 }
 
 func (m *ResourceModel) GetResourceArchivebyCodenVersion() ([]tk.M, error) {
-
 	conn, err := h.PrepareConnection()
 	defer conn.Close()
 

@@ -38,7 +38,7 @@ func main() {
 			url := r.Request.URL.String()
 
 			if url == "/login/default" && r.Session("username") != nil {
-				h.Redirect(r, "dashboard", "default")
+				h.Redirect(r, "resource", "default")
 				return true
 			}
 
@@ -74,7 +74,7 @@ func createApp() *knot.App {
 	app := knot.NewApp("apichain")
 
 	/**REGISTER ALL CONTROLLERS HERE**/
-	app.Register(&c.Dashboard{BaseController: baseCtrl})
+	// app.Register(&c.Dashboard{BaseController: baseCtrl})
 	app.Register(&c.Designer{BaseController: baseCtrl})
 	app.Register(&c.Login{BaseController: baseCtrl})
 	app.Register(&c.Logout{BaseController: baseCtrl})

@@ -125,6 +125,10 @@ h5, .h5 {
     border-color: #dbdbdb;
 }
 
+tbody, .k-grid-header .k-header>.k-link, .k-header, .k-treemap-title{
+  color: black;
+}
+
 @media (min-width: 768px){
   .content-wrapper .top-left-part {
     width: 190px;

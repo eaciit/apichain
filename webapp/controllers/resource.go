@@ -24,7 +24,7 @@ type Resource struct {
 func (c *Resource) Default(k *knot.WebContext) interface{} {
 	k.Config.NoLog = true
 	k.Config.OutputType = knot.OutputTemplate
-	k.Config.IncludeFiles = []string{"_loader.html", "resource/ramleditor.html", "resource/resourcemodel.html"}
+	k.Config.IncludeFiles = []string{"_loader.html", "resource/ramleditor.html", "resource/resourcemodel.html", "resource/newramlform.html"}
 	return ""
 }
 
