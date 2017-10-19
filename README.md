@@ -1,6 +1,14 @@
 # apichain
 
-To run 
-1. Restore database from dumps folder
-2. Configure app.json on config folder
-3. Run "nohup ./apichain &" from webapp folder
+To build the images, run this command inside repository directory
+docker build -t apichain .
+ 
+To run the build images for demo/one time run
+docker run --init -ti --rm -p 9150:9150 apichain
+ 
+Open browser, url available on 127.0.0.1 or server ip port 9150
+ 
+Port exposes on 9150 (http)
+Credential for http:
+Username eaciit
+Password Password.1
